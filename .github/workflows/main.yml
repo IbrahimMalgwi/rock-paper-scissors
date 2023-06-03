@@ -32,11 +32,9 @@ jobs:
           key: ${{ runner.os }}-m2-$ {{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
           
-      - name: Step 5 - List the current directory 
-        run: ls -a
-        
-      - name: Step 6 - what is the target folder?
-        run: |
-          cd target
-          ls -a 
+      - name: Step 5 - Persist workflow date as artificats 
+        uses: actions/upload-artifact@v2
+        with: 
+          name: github-actions-artifact
+          path: staging
           
